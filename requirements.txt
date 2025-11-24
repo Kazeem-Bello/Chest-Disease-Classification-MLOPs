@@ -1,4 +1,6 @@
-tensorflow==2.20.0
+# tensorflow==2.20.0
+tensorflow-macos
+tensorflow-metal
 pandas
 gdown
 dvc
@@ -17,4 +19,5 @@ scipy
 Flask
 Flask-Cors
 python-dotenv
+pydantic
 -e .
