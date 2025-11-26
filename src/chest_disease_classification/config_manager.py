@@ -1,4 +1,4 @@
-from chest_disease_classification.config_class import DataIngestionConfig
+from chest_disease_classification.config_class import DataIngestionConfig, BaseModelConfig
 from chest_disease_classification.utils import read_yaml, create_directory
 from pathlib import Path
 
@@ -24,4 +24,21 @@ class ConfigurationManager:
         unzip_dir = Path(config_data_ingestion.unzip_dir)
         )
         return data_ingestion_config
+    
+    def get_base_model_config(self) -> BaseModelConfig:
+        config_base_model = self.config.base_model
+        create_directory(config_base_model.root_dir)
+
+        base_model_config = BaseModelConfig(
+            root_dir = Path(config_base_model.root_dir),
+            base_model_dir = Path(config_base_model.base_model_dir),
+            updated_base_model_dir = Path(config_base_model.updated_base_model_dir),
+            include_top = self.params.include_top,
+            image_size = self.params.image_size,
+            classes = self.params.classes,
+            weights = self.params.weights,
+            learning_rate = self.params.learning_rate
+        )
+        return base_model_config
+
 

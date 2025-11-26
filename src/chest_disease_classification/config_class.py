@@ -13,8 +13,9 @@ class BaseModelConfig:
     root_dir: Path
     base_model_dir: Path
     updated_base_model_dir: Path
-    params_include_top: bool
-    params_image_size: list
-    params_classes: int
-    params_weights: str
-    params_learning_rate: float
+    include_top: bool
+    image_size: list
+    classes: int
+    weights: str
+    learning_rate: float
+
