@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 from pathlib import Path
+from pydantic import BaseModel
 
 @dataclass
 class DataIngestionConfig:
@@ -19,3 +20,24 @@ class BaseModelConfig:
     weights: str
     learning_rate: float
 
+@dataclass
+class TrainingConfig:
+    root_dir: Path
+    model_dir: Path
+    updated_base_dir: Path
+    training_data: Path
+    epoch: int
+    bathsize: int
+    augmentation: bool
+    image_size: list
+
+class ModelTrainingConfig(BaseModel):
+    root_dir: Path
+    model_dir: Path
+    updated_base_model_dir: Path
+    training_data: Path
+    epoch: int
+    batch_size: int
+    augmentation: bool
+    image_size: list
+    learning_rate: float

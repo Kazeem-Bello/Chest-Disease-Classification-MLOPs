@@ -1,6 +1,7 @@
-from chest_disease_classification.config_class import DataIngestionConfig, BaseModelConfig
+from chest_disease_classification.config_class import DataIngestionConfig, BaseModelConfig, ModelTrainingConfig
 from chest_disease_classification.utils import read_yaml, create_directory
 from pathlib import Path
+import os
 
 
 class ConfigurationManager:
@@ -40,5 +41,26 @@ class ConfigurationManager:
             learning_rate = self.params.learning_rate
         )
         return base_model_config
+    
+    def get_training_config(self) -> ModelTrainingConfig:
+        config_training = self.config.model_training
+        config_base_model = self.config.base_model
+        config_data_ingestion = self.config.data_ingestion
+        training_data = os.path.join(config_data_ingestion.unzip_dir, "Chest-CT-Scan-data")
+        
+        create_directory(config_training.root_dir)
+        model_training_config = ModelTrainingConfig(
+            root_dir = Path(config_training.root_dir),
+            model_dir = Path(config_training.model_dir),
+            updated_base_model_dir = Path(config_base_model.updated_base_model_dir),
+            training_data = Path(training_data),
+            epoch = self.params.epoch,
+            batch_size = self.params.batch_size,
+            augmentation = self.params.augmentation,
+            image_size = self.params.image_size,
+            learning_rate = self.params.learning_rate
+        )
+        return model_training_config
+        
 
 

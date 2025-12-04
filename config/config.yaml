@@ -10,3 +10,7 @@ base_model:
   root_dir: artifact/base_model
   base_model_dir: artifact/base_model/base_model.h5
   updated_base_model_dir: artifact/base_model/updated_base_model.h5
+
+model_training:
+  root_dir: artifact/trained_model
+  model_dir: artifact/trained_model/model.h5

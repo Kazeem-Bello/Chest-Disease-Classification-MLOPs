@@ -3,12 +3,6 @@ from chest_disease_classification.config_class import BaseModelConfig
 import tensorflow as tf
 from pathlib import Path
 
-
-
-
-
-
-
 class BaseModel:
     def __init__(self, config: BaseModelConfig):
         self.config = config

@@ -48,7 +48,7 @@ def create_directory(path: Path, verbose = True):
     Args:
         path (str): path of directories"""
 
-    os.makedirs(path, exist_ok = True)
+    os.makedirs(Path(path), exist_ok = True)
     logger.info("Directory created at: %s", path)
 
 @validate_call
